@@ -1,18 +1,33 @@
-This is the IaC code to create Cloud run service  with database CLOUD SQL and Load balancer .
+# Terraform Code for creating a Cloud Run service with DB and Load balancer.
 
-You need to add either terraform.auto.tfvars
+This repository contains Terraform code to set up a Google Cloud infrastructure with the following components:
 
-to include in the variables like this
+- **Google Cloud Run Service**
+- **Google Cloud SQL Database**
+- **HTTP(S) Load Balancer**
+
+## Configuration
+
+### Variables
+
+
+
+You need to provide configuration values for the Terraform deployment. You have several options for including these variables:
+
+#### Option 1: `terraform.auto.tfvars`
+
+Create a file named `terraform.auto.tfvars` in the root of your Terraform directory with the following content:
 
 
 project_id = "my-project-id"
-db_user="myuser"
-db_pass="mypass"
-db_name="mydb"
+db_user    = "myuser"
+db_pass    = "mypass"
+db_name    = "mydb"
+
+#### Option 2: CLI Variables
+
+terraform apply -var="project_id=my-project-id" -var="db_user=myuser" -var="db_pass=mypass" -var="db_name=mydb"
 
 
-OR 
+#### Option 3: Integrating with Github Actions and using Secrets with CI/CD
 
-you can include them via CLI 
-
-or if you are including a Github Actions CI/CD pipeline you can include it in the Github Actions Secrets.
